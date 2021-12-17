@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JBake</title>
+    <link>http://localhost:8820</link>
+    <atom:link href="http://localhost:8820/feed.xml" rel="self" type="application/rss+xml" />
+    <description>JBake Bootstrap Template</description>
+    <language>en-gb</language>
+    <pubDate>Fri, 17 Dec 2021 21:31:31 +0100</pubDate>
+    <lastBuildDate>Fri, 17 Dec 2021 21:31:31 +0100</lastBuildDate>
+
+    <item>
+      <title>ili2db 4.7.0</title>
+      <link>http://localhost:8820/changelogs/ili2pg/4.7.0/fubar.html</link>
+      <pubDate>Mon, 1 Nov 2021 00:00:00 +0100</pubDate>
+      <guid isPermaLink="false">changelogs/ili2pg/4.7.0/fubar.html</guid>
+      	<description>
+	&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Wer kennt sie nicht? Die INTERLIS-Laufzeitparameter (siehe &lt;a href=&quot;https://www.interlis.ch/download/interlis2/ili2-refman_2006-04-13_d.pdf&quot;&gt;Referenzhandbuch Kapitel 2.11&lt;/a&gt;). Also zum Beispiel ich. Jedenfalls waren sie mir lange nicht bekannt. Sie sind jedoch die Lösung für eine bekannte Herausforderung: Die Nachführungsgeometer schicken die Geschäfte via AVGBS ans Grundbuch. Der Name der Transferdatei muss dabei gewisse Konventionen erfüllen. Ganz einfach formuliert, muss der Name der Datei einem Attributwert innerhalb der Datei entsprechen. In Tat und Wahrheit ist es leicht komplexer aber es geht ums grundlegende Prinzip. Wie kann &lt;a href=&quot;https://github.com/claeis/ilivalidator&quot;&gt;&lt;em&gt;ilivalidator&lt;/em&gt;&lt;/a&gt; nun prüfen, ob der Namen der zu prüfenden Datei einem Werte eines Attributes der zu prüfenden Daten selbst entspricht? Runtime Parameter to the rescue!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So wie ich das Referenzhandbuch verstehe, ist die Verfügbarkeit von Laufzeitparametern vom System abhängig:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&amp;laquo;Nebst den eigentlichen Daten und den Metadaten können auch einzelne Datenelemente definiert werden, bei denen erwartet wird, dass sie von einem Bearbeitungs-, Auswerte- oder Darstellungssystem zur Laufzeit bereitgestellt werden. Sie heissen Laufzeitparameter.&amp;raquo;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Unser Auswertesystem &lt;em&gt;ilivalidator&lt;/em&gt; kennt zum jetzigen Zeitpunkt folgende Laufzeitparameter:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RuntimeSystemName&lt;/code&gt;: Name der Software, z.B. &amp;laquo;ilivalidator&amp;raquo; (ilivalidator)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;RuntimeSystemVersion&lt;/code&gt;: Version der Software, z.B. &amp;laquo;1.11.11&amp;raquo; (ilivalidator)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;OperatingSystemName&lt;/code&gt;: Betriebssystem, z.B. &amp;laquo;Mac OS X&amp;raquo; (ili2c)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;HostName&lt;/code&gt;: Name des Hosts, z.B. &amp;laquo;localhost&amp;raquo; (ili2c)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CurrentUserName&lt;/code&gt;: Name des Users, der den Prozess startet, z.B. &amp;laquo;stefan&amp;raquo; (ili2c)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CurrentDateTime&lt;/code&gt;: Zeitpunkt des Prozesstarts, z.B. &amp;laquo;2017-08-22T15:00:00.000&amp;raquo; (ili2c)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CurrentTransferfile&lt;/code&gt;: Name der zu prüfenden Datei, z.B. &amp;laquo;SO0200002403_1180.xml&amp;raquo; (ilivalidator)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Machen wir ein Beispiel anhand eines sehr einfachen Modelles:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight linenums&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;INTERLIS 2.3;
+MODEL Testmodel
+  AT &quot;mailto:stefan.ziegler@bd.so.ch&quot; VERSION &quot;2019-01-27&quot; =
+
+  IMPORTS MinimalRuntimeSystem01;
+
+    TOPIC Topic =
+
+        CLASS ClassA =
+            attr2 : TEXT;
+            MANDATORY CONSTRAINT attr2==PARAMETER MinimalRuntimeSystem01.CurrentTransferfile;
+        END ClassA;
+
+    END Topic;
+
+END Testmodel.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Das Modell muss das MinimalRuntimeSystem01-Datenmodell importieren. Dieses ist Stand heute noch in keiner Modellablage vorhanden, muss also lokal vorliegen. Die Klasse hat genau ein Attribut &lt;code&gt;attr2&lt;/code&gt; und einen &lt;code&gt;MANDATORY CONSTRAINT&lt;/code&gt;, der die gewünschte Prüfung übernimmt.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Der Inhalt der Datei SO0200002403_1180.xtf sieht wie folgt aus:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight linenums&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;TRANSFER xmlns=&quot;http://www.interlis.ch/INTERLIS2.3&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&amp;gt;
+  &amp;lt;HEADERSECTION SENDER=&quot;sogis&quot; VERSION=&quot;2.3&quot;&amp;gt;
+  &amp;lt;/HEADERSECTION&amp;gt;
+  &amp;lt;DATASECTION&amp;gt;
+    &amp;lt;Testmodel.Topic BID=&quot;b1&quot;&amp;gt;
+      &amp;lt;Testmodel.Topic.ClassA TID=&quot;o1&quot;&amp;gt;
+        &amp;lt;attr2&amp;gt;SO0200002403_1180.xtf&amp;lt;/attr2&amp;gt;
+      &amp;lt;/Testmodel.Topic.ClassA&amp;gt;
+    &amp;lt;/Testmodel.Topic&amp;gt;
+  &amp;lt;/DATASECTION&amp;gt;
+&amp;lt;/TRANSFER&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Ich kann &lt;em&gt;ilivalidator&lt;/em&gt; wie gewohnt starten und erhalte das Resultat der Prüfung.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight&quot;&gt;&lt;code&gt;java -jar ilivalidator-1.11.11.jar SO0200002403_1180.xtf&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Ändere ich entweder den Namen der Datei oder den Wert des Attributes &lt;code&gt;attr2&lt;/code&gt;, erscheint eine Fehlermeldung:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight&quot;&gt;&lt;code&gt;Error: line 7: Testmodel.Topic.ClassA: tid o1: Mandatory Constraint Testmodel.Topic.ClassA.Constraint1 is not true.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Die Fehlermeldung kann man mit einem Metaattribut gehaltvoller machen:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight linenums&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;!!@ ilivalid.msg = &quot;attr2 = {attr2} entspricht Dateinamen.&quot;
+MANDATORY CONSTRAINT attr2==PARAMETER MinimalRuntimeSystem01.CurrentTransferfile;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Ilivalidator&lt;/em&gt; kennt noch eine weitere Syntax für die Verwendung der Laufzeitparameter in Constraints:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight linenums&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;MANDATORY CONSTRAINT attr2==MinimalRuntimeSystem01.getParameterValue(&quot;MinimalRuntimeSystem01.CurrentTransferfile&quot;);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Muss man für die Validierung eine eigene &lt;a href=&quot;https://github.com/claeis/ilivalidator/blob/master/demoplugin/src/org/interlis2/validator/demo/CheckGebaeudeVersicherungsSystemIoxPlugin.java&quot;&gt;&lt;code&gt;InterlisFunction&lt;/code&gt;&lt;/a&gt; implementieren und benötigt Laufzeitparameter, können diese via &lt;code&gt;TransferDescription&lt;/code&gt; ausgelesen werden. Die benötigen Methoden sind &lt;code&gt;getActualRuntimeParameters()&lt;/code&gt; resp. &lt;code&gt;getActualRuntimeParameter(&amp;#8230;&amp;#8203;)&lt;/code&gt;. In Unit-Tests muss z.B. der &lt;code&gt;CurrentTransferfile&lt;/code&gt;-Parameter explizit selber gesetzt werden, weil es ja keine Datei gibt, die geprüft wird, sondern nur Objekte:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;prettyprint highlight linenums&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;Iom_jObject iomObjA = new Iom_jObject(ILI_CLASSA, OBJ_OID1);
+iomObjA.setattrvalue(&quot;attr2&quot;, &quot;SO0200002601_3396.xml&quot;);
+ValidationConfig modelConfig = new ValidationConfig();
+modelConfig.mergeIliMetaAttrs(td);
+LogCollector logger = new LogCollector();
+LogEventFactory errFactory = new LogEventFactory();
+Settings settings = new Settings();
+Map&amp;lt;String,Class&amp;gt; newFunctions = new HashMap&amp;lt;String,Class&amp;gt;();
+newFunctions.put(&quot;SO_FunctionsExt.RuntimeDummy&quot;, RuntimeDummyIoxPlugin.class);
+settings.setTransientObject(Validator.CONFIG_CUSTOM_FUNCTIONS, newFunctions);
+td.setActualRuntimeParameter(ch.interlis.ili2c.metamodel.RuntimeParameters.MINIMAL_RUNTIME_SYSTEM01_CURRENT_TRANSFERFILE, &quot;SO0200002601_3396.xml&quot;);
+Validator validator=new Validator(td, modelConfig, logger, errFactory, new PipelinePool(), settings);
+validator.validate(new StartTransferEvent());
+validator.validate(new StartBasketEvent(ILI_TOPIC,BID1));
+validator.validate(new ObjectEvent(iomObjA));
+validator.validate(new EndBasketEvent());
+validator.validate(new EndTransferEvent());&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+	</description>
+    </item>
+
+  </channel> 
+</rss>

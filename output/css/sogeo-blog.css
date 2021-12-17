@@ -1,0 +1,186 @@
+html {
+    font-size: 18px;
+}
+
+body {
+    color: rgb(36, 38, 43);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem !important;
+}
+
+.antialiased, body {
+    -webkit-font-smoothing: auto !important;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: rgb(36, 38, 43);
+    font-size: 1.8rem;
+}
+  
+.container {
+    max-width: 800px;
+}
+
+.container p.credit {
+    font-size: 0.67rem;
+}
+
+.paragraph {
+    margin-top: 25px;
+    margin-bottom: 0px;
+    text-align: justify;
+    line-height: 1.7;
+}
+
+
+p.author {
+    font-size: 0.78rem;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    text-align: justify;
+}
+
+
+li p {
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+}
+
+.content img {
+    border-radius: 0.3em;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    border: 0.5em solid #FFF;
+}
+  
+.imageblock {
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.navbar-default {
+    background-color: #FFF;
+}
+
+.navbar-default .navbar-brand {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+ol.linenums {
+    margin-bottom: 0px !important;
+}
+
+.date {
+    font-size: 1rem;
+    color: #aaa;
+    text-transform: uppercase;
+    font-style: italic;
+}
+  
+#footer {
+    border-top-width: 0px;
+    border-top-style: solid;
+    border-top-color: rgb(231, 231, 231);
+    background-color: #FFF;
+}
+
+/* syntax highlighting */
+.listingblock {
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+*:not(pre) > code {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    color: black;
+    font-size: 0.95rem;
+    border-width: 0px;
+    background-color: rgb(250, 250, 250);
+
+}
+
+pre.prettyprint {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #FAFAFA;
+    border-width: 0px;
+    overflow-x: auto;
+    padding-bottom: initial;
+}
+
+pre code {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #FAFAFA;
+    font-size: 0.95rem;
+}
+
+.listingblock ol.linenums {
+    font-style: normal;
+    font-family: 'PT Mono', monospace;
+    color: #CCC;
+    margin-left: 10px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+li code {
+    font-style: normal;
+    border-width: 0px;
+    background-color: #FAFAFA !important;
+    white-space: pre;
+    word-break: keep-all;
+    word-wrap: normal;
+}
+
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+    font-style: normal;
+    background-color: #FAFAFA !important;
+    font-size: 0.95rem;
+}
+
+li.L2, li.L4, li.L6, li.L8, li.L0 {
+    font-style: normal;
+    background-color: #FAFAFA !important;
+    font-size: 0.95rem;
+}
+
+/* Tables */
+table {
+    border: none !important;
+    border-collapse: collapse !important;
+}
+
+.tableblock > caption {
+    font-size: 1rem;
+    color: rgb(36, 38, 43) !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    padding-top: 20px;
+}
+
+td, th {
+    border-bottom: 1px solid #ccc !important;
+}
+
+th.tableblock {
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    background-color: #dfdfdf !important;
+    padding: 10px 10px 10px 10px !important;
+}
+
+td.tableblock {
+    padding: 10px 10px 10px 10px !important;
+}
+
+p.tableblock {
+    font-size: 1rem !important;
+    margin-top: 0px !important;
+}
